@@ -104,7 +104,7 @@ export const PolizasContent = () => {
           <TableBody key={0}>
             {polizas.map(p => (
               <TableRow key={p.id_seguro}>
-                <TableCell key={`${p.id_seguro}_1`}>{p.id_seguro}</TableCell>
+                <TableCell key={`${p.id_seguro}_1`}><strong>{p.id_seguro}</strong></TableCell>
                 <TableCell key={`${p.id_seguro}_2`}><strong>{p.nombre}</strong></TableCell>
                 <TableCell key={`${p.id_seguro}_3`}><strong>{`00${p.id_seguro}`}</strong></TableCell>
                 <TableCell key={`${p.id_seguro}_4`}><strong>{p.tipo}</strong></TableCell>

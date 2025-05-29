@@ -13,10 +13,13 @@ import {
 } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { Modal } from '../Modal';
+import { ModalEliminarUsuario } from '../ModalEliminarUsuario/ModalEliminarUsuario';
 
 export const ClientesContent = () => {
   const [clientes, setClientes] = useState([]);
   const [modalAbierto, setModalAbierto] = useState(false);
+  const [modalEliminarAbierto, setModalEliminarAbierto] = useState(false);
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null); // Puedes usarlo para saber qué cliente eliminar
 
   useEffect(() => {
     consultarClientes();
@@ -69,9 +72,14 @@ export const ClientesContent = () => {
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
         <Typography variant="h5" fontWeight="bold">Gestión de Clientes</Typography>
-        <Button variant="contained" color="error" sx={{ mr: 1 }}>
-            Eliminar cliente
-          </Button>
+        <Button
+          variant="contained"
+          color="error"
+          sx={{ mr: 1 }}
+          onClick={() => setModalEliminarAbierto(true)}
+        >
+          Eliminar cliente
+        </Button>
         <Button
           variant="contained"
           color="secondary"
@@ -94,7 +102,7 @@ export const ClientesContent = () => {
             </TableRow>
           </TableHead>
           <TableBody key={0}>
-            {clientes.map(p  => (
+            {clientes.map(p => (
               <TableRow key={p.id_usuario}>
                 <TableCell key={`${p.id_usuario}_1`}><strong>{p.id_usuario}</strong></TableCell>
                 <TableCell key={`${p.id_usuario}_2`}><strong>{p.nombre}</strong></TableCell>
@@ -111,6 +119,12 @@ export const ClientesContent = () => {
         open={modalAbierto}
         onClose={() => setModalAbierto(false)}
         onGuardar={guardarCliente}
+      />
+      <ModalEliminarUsuario
+        open={modalEliminarAbierto}
+        onClose={() => setModalEliminarAbierto(false)}
+        usuario={usuarioSeleccionado}
+        onEliminar={consultarClientes}
       />
     </Box>
   );

@@ -66,7 +66,7 @@ export const RolesContent = () => {
           <TableBody key={0}>
             {roles.map(p => (
               <TableRow key={p.id_usuario}>
-                <TableCell key={`${p.id_usuario}_1`}>{p.id_usuario}</TableCell>
+                <TableCell key={`${p.id_usuario}_1`}><strong>{p.id_usuario}</strong></TableCell>
                 <TableCell key={`${p.id_usuario}_2`}><strong>{p.nombre}</strong></TableCell>
                 <TableCell key={`${p.id_usuario}_3`}><strong>{p.tipo}</strong></TableCell>
                 <TableCell key={`${p.id_usuario}_4`}><strong>{p.rol}</strong></TableCell>
