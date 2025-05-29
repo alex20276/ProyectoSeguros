@@ -1,25 +1,21 @@
 "use client";
-import React from 'react';
-import './DoshboardAgentes.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import './DoshboardClientes.css';
+import PropTypes from 'prop-types';
+
+import { Box } from '@mui/material';
 import { DashboardContent } from '../../components/Doshboard/DashboardContent';
 import { PolizasContent } from '../../components/Doshboard/PolizasContent';
 import { ClientesContent } from '../../components/Doshboard/ClientesContent';
-import { Box } from '@mui/material';
-import { SidebarAgente } from '../../components/Sidebar/SidebarAgente';
+import { SidebarCliente } from '../../components/Sidebar/SidebarCliente';
 
-
-export const DoshboardAgentes = ({}) => {
+export const DoshboardClientes = ({}) => {
 	const [seccionActiva, setSeccionActiva] = useState('Dashboard');
 
   const renderContenido = () => {
     switch (seccionActiva) {
       case 'Dashboard':
         return <DashboardContent />;
-      case 'Polizas':
-        return <PolizasContent />;
-      case 'Clientes':
-        return <ClientesContent/>;
       case 'Reportes':
         return <h2>Visualización de Reportes</h2>;
       case 'Cerrar Sesión':
@@ -31,7 +27,7 @@ export const DoshboardAgentes = ({}) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <SidebarAgente seccionActiva={seccionActiva} setSeccionActiva={setSeccionActiva} />
+      <SidebarCliente seccionActiva={seccionActiva} setSeccionActiva={setSeccionActiva} />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         {renderContenido()}
       </Box>
@@ -39,4 +35,4 @@ export const DoshboardAgentes = ({}) => {
   );
 };
 
-DoshboardAgentes.propTypes = {};
+DoshboardClientes.propTypes = {};

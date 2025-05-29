@@ -6,6 +6,7 @@ import { Login } from './pages/Login';
 import { Doshboard } from './pages/Doshboard';
 import { UserProvider } from './context/UserContext';
 import { DoshboardAgentes } from './pages/DoshboardAgentes';  
+import { DoshboardClientes } from './pages/DoshboardClientes/DoshboardClientes';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" element ={<Home/>} />
           <Route path="/doshboard" element ={<Doshboard/>} />
           <Route path="/doshboardAgentes" element ={<DoshboardAgentes/>} />
+          <Route path="/doshboardClientes" element ={<DoshboardClientes/>} />
         </Routes>
         </BrowserRouter>
     </UserProvider>
