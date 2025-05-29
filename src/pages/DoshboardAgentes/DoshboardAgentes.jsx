@@ -1,12 +1,10 @@
 "use client";
 import React from 'react';
 import './DoshboardAgentes.css';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { DashboardContent } from '../../components/Doshboard/DashboardContent';
 import { PolizasContent } from '../../components/Doshboard/PolizasContent';
 import { ClientesContent } from '../../components/Doshboard/ClientesContent';
-import { RolesContent } from '../../components/Doshboard/RolesContent';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { Box } from '@mui/material';
 
