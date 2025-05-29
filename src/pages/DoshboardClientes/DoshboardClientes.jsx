@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 import { Box } from '@mui/material';
 import { DashboardContent } from '../../components/Doshboard/DashboardContent';
-import { PolizasContent } from '../../components/Doshboard/PolizasContent';
-import { ClientesContent } from '../../components/Doshboard/ClientesContent';
 import { SidebarCliente } from '../../components/Sidebar/SidebarCliente';
 
 export const DoshboardClientes = ({}) => {
