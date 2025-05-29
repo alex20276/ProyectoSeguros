@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Doshboard } from './pages/Doshboard';
 import { UserProvider } from './context/UserContext';
+import { DoshboardAgentes } from './pages/DoshboardAgentes';  
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element ={<Login/>} />
           <Route path="/home" element ={<Home/>} />
           <Route path="/doshboard" element ={<Doshboard/>} />
+          <Route path="/doshboardAgentes" element ={<DoshboardAgentes/>} />
         </Routes>
         </BrowserRouter>
     </UserProvider>

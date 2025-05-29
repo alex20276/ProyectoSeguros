@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Box, Button, Modal, Typography, TextField } from '@mui/material';
+import { 
+	Box, 
+	Button, 
+	Modal, 
+	Typography, 
+	TextField 
+} from '@mui/material';
 
 export const ModalEliminarUsuario = ({ open, onClose, onEliminar }) => {
   const [idUsuario, setIdUsuario] = useState('');
