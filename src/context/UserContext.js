@@ -4,9 +4,18 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [usuario, setUsuario] = useState({
-        nombre: "s/n",
-        edad: 0
-    });//{}para objetos
+        nombre: '',
+        correo: '',
+        telefono: '',
+        username: '',
+        password: '',
+        apellido: '',
+        tipo: '',
+        activo: '',
+        cedula: '',
+        rol: ''
+    });
+
     return (
         <UserContext.Provider value={{ usuario, setUsuario }}>
             {children}

@@ -14,12 +14,15 @@ import {
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { Modal } from '../Modal';
 import { ModalEliminarUsuario } from '../ModalEliminarUsuario/ModalEliminarUsuario';
+import { ModalEditarUsuario } from '../ModalEditarUsuario/ModalEditarUsuario';
 
 export const ClientesContent = () => {
   const [clientes, setClientes] = useState([]);
   const [modalAbierto, setModalAbierto] = useState(false);
   const [modalEliminarAbierto, setModalEliminarAbierto] = useState(false);
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null); // Puedes usarlo para saber qué cliente eliminar
+  const [modalEditarAbierto, setModalEditarAbierto] = useState(false);
+  const [usuarioEditar, setUsuarioEditar] = useState(null);
 
   useEffect(() => {
     consultarClientes();
@@ -70,24 +73,43 @@ export const ClientesContent = () => {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-        <Typography variant="h5" fontWeight="bold">Gestión de Clientes</Typography>
-        <Button
-          variant="contained"
-          color="error"
-          sx={{ mr: 1 }}
-          onClick={() => setModalEliminarAbierto(true)}
+      <Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 2,
+          }}
         >
-          Eliminar cliente
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          startIcon={<PersonAddAltIcon />}
-          onClick={() => setModalAbierto(true)}
-        >
-          Añadir cliente
-        </Button>
+          <Typography variant="h5" fontWeight="bold">
+            Gestión de Clientes
+          </Typography>
+
+          <Box sx={{ display: "flex", gap: 1 }}>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#25004D",
+                "&:hover": {
+                  backgroundColor: "#25004D", // Color más oscuro para el hover
+                },
+              }}
+              startIcon={<PersonAddAltIcon />}
+              onClick={() => setModalAbierto(true)}
+            >
+              Añadir cliente
+            </Button>
+
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => setModalEliminarAbierto(true)}
+            >
+              Eliminar cliente
+            </Button>
+          </Box>
+        </Box>
       </Box>
 
       <TableContainer component={Paper}>
@@ -99,6 +121,7 @@ export const ClientesContent = () => {
               <TableCell><strong>Correo</strong></TableCell>
               <TableCell><strong>Teléfono</strong></TableCell>
               <TableCell><strong>Acción</strong></TableCell>
+              <TableCell><strong>Edicion</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody key={0}>
@@ -109,6 +132,7 @@ export const ClientesContent = () => {
                 <TableCell key={`${p.id_usuario}_3`}><strong>{p.correo}</strong></TableCell>
                 <TableCell key={`${p.id_usuario}_4`}><strong>{p.telefono}</strong></TableCell>
                 <TableCell key={`${p.id_seguro}_5`}><Button variant="outlined">Ver</Button></TableCell>
+                <TableCell key={`${p.id_seguro}_6`}><Button variant="outlined" onClick={() => { setUsuarioEditar(p); setModalEditarAbierto(true); }}> Editar </Button></TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -125,6 +149,13 @@ export const ClientesContent = () => {
         onClose={() => setModalEliminarAbierto(false)}
         usuario={usuarioSeleccionado}
         onEliminar={consultarClientes}
+      />
+
+      <ModalEditarUsuario
+        open={modalEditarAbierto}
+        onClose={() => setModalEditarAbierto(false)}
+        usuario={usuarioEditar}
+        onGuardar={consultarClientes}
       />
     </Box>
   );
